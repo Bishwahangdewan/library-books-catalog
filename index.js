@@ -3,8 +3,10 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-    res.send("Hello");
-})
+//useRoutes
+app.use('/books', require('./api/Books'));
+
+//default
+app.get('/', (req, res) => res.send("Hello"));
 
 app.listen(PORT, () => console.log("Server started running on port " + PORT));
