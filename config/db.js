@@ -6,7 +6,8 @@ const genreSchema = require('../models/Genre');
 
 //mongodb connect
 const booksConn = mongoose.createConnection(keys.booksURI);
-const genreConn = mongoose.createConnection(keys.genreConn);
+const genreConn = mongoose.createConnection(keys.genreURI);
+
 
 const Book = booksConn.model('Book', booksSchema);
 const Genre = genreConn.model('Genre', genreSchema);
