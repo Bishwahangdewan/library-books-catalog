@@ -110,4 +110,54 @@ router.post('/edit/:id/:genre', (req, res) => {
 })
 
 
+//ROUTE  : /books/updateMany/description
+//METHOD : POST
+//DESC   : update description of multiple documents
+router.post('/updateMany/description', (req, res) => {
+    const updateDocumentId = req.body.id;
+    const updateValue = req.body.updateValue;
+
+    Book.updateMany(
+        { _id: { $in: updateDocumentId } },
+        { $set: { description: updateValue } }
+    ).then(data => {
+        return res.json(data);
+    }).catch(err => console.log(err));
+})
+
+
+//ROUTE  : /books/updateMany/name 
+//METHOD : POST
+//DESC   : update name of  multiple documents
+router.post('/updateMany/name', (req, res) => {
+    const updateDocumentId = req.body.id;
+    const updateValue = req.body.updateValue;
+
+    console.log(updateDocumentId, updateValue)
+
+    Book.updateMany(
+        { _id: { $in: updateDocumentId } },
+        { $set: { name: updateValue } }
+    ).then(data => {
+        return res.json(data);
+    }).catch(err => console.log(err));
+})
+
+//ROUTE  : /books/updateMany/author 
+//METHOD : POST
+//DESC   : update author of  multiple documents
+router.post('/updateMany/author', (req, res) => {
+    const updateDocumentId = req.body.id;
+    const updateValue = req.body.updateValue;
+
+    console.log(updateDocumentId, updateValue)
+
+    Book.updateMany(
+        { _id: { $in: updateDocumentId } },
+        { $set: { author: updateValue } }
+    ).then(data => {
+        return res.json(data);
+    }).catch(err => console.log(err));
+})
+
 module.exports = router;
